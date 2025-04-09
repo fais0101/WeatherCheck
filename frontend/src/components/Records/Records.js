@@ -114,7 +114,6 @@ const Records = () => {
             <tr>
               <th>Location</th>
               <th>Start</th>
-              <th>End</th>
               <th>Temp</th>
               <th>Notes</th>
               <th>Actions</th>
@@ -125,7 +124,6 @@ const Records = () => {
               <tr key={rec.id}>
                 <td>{rec.location}</td>
                 <td>{rec.start_date}</td>
-                <td>{rec.end_date}</td>
                 <td>{rec.temperature ?? '-'}°F</td>
                 <td>
                   {editingId === rec.id ? (

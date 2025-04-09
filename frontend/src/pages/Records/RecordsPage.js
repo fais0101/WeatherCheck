@@ -1,5 +1,5 @@
 import React from 'react';
-import Records from '../components/Records/Records';
+import Records from '../../components/Records/Records';
 
 function RecordsPage() {
   return (

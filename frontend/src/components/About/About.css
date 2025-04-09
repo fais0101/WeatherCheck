@@ -1,0 +1,44 @@
+.about-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--card-dark);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-content {
+  text-align: center;
+  color: var(--text-light);
+}
+
+.about-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  text-shadow: 0 0 10px rgba(108, 92, 231, 0.5);
+}
+
+.motto {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: var(--text-muted);
+}
+
+.developer-info {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.developer-info p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.developer-info p:first-child {
+  font-weight: 600;
+  color: var(--primary-color);
+} 

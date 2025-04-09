@@ -225,6 +225,13 @@ const Weather = () => {
           >
             📋 View Saved Records
           </button>
+          <button
+            type="button"
+            className="button about"
+            onClick={() => navigate('/about')}
+          >
+            ℹ️ About PM Accelerator
+          </button>
         </div>
       </form>
 

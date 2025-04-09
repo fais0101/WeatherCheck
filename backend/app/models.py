@@ -7,7 +7,6 @@ class WeatherRecord(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     location = db.Column(db.String(100), nullable=False)
     start_date = db.Column(db.DateTime)
-    end_date = db.Column(db.DateTime)
     temperature = db.Column(db.Float)
     notes = db.Column(db.String(255))
 
@@ -16,7 +15,6 @@ class WeatherRecord(db.Model):
             "id": self.id,
             "location": self.location,
             "start_date": self.start_date.strftime('%Y-%m-%d %H:%M') if self.start_date else None,
-            "end_date": self.end_date.strftime('%Y-%m-%d %H:%M') if self.end_date else None,
             "temperature": self.temperature,
             "notes": self.notes
         }
