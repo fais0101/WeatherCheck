@@ -1,0 +1,8 @@
+.home {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--background-dark), #0f0f1a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+} 

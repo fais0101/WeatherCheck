@@ -1,0 +1,61 @@
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: #1e1e2f; /* dark table background */
+    color: #ffffff; /* light text */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  .records-table th,
+  .records-table td {
+    padding: 12px 16px;
+    border: 1px solid #444;
+  }
+  
+  .records-table th {
+    background-color: #2a2a40;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+  }
+  
+  .records-table tr:nth-child(even) {
+    background-color: #2f2f4f;
+  }
+  
+  .records-table tr:hover {
+    background-color: #3a3a5f;
+  }
+  .back-button {
+    margin-bottom: 1rem;
+    padding: 10px 16px;
+    font-size: 1rem;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .back-button:hover {
+    background-color: #666;
+  }
+
+.edit-input {
+  background: #252547;
+  border: 1px solid #6c5ce7;
+  border-radius: 4px;
+  color: #ffffff;
+  padding: 4px 8px;
+  width: 100%;
+  min-width: 150px;
+}
+
+.edit-input:focus {
+  outline: none;
+  border-color: #a8a4e6;
+  box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.2);
+}
