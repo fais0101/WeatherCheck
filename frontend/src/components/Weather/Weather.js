@@ -31,7 +31,7 @@ const Weather = () => {
 
     try {
       const endpoint = activeTab === 'historical' ? 'historical' : 'weather';
-      const res = await fetch(`http://localhost:8080/api/${endpoint}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE}/api/${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -51,7 +51,7 @@ const Weather = () => {
         
         // Save to records for both current and historical
         if (activeTab === 'current') {
-          await fetch('http://localhost:8080/api/records', {
+          await fetch(`${process.env.REACT_APP_API_BASE}/api/records`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -66,7 +66,7 @@ const Weather = () => {
         } else {
           // For historical data, save each day as a separate record
           for (const day of data) {
-            await fetch('http://localhost:8080/api/records', {
+            await fetch(`${process.env.REACT_APP_API_BASE}/api/records`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
@@ -88,7 +88,7 @@ const Weather = () => {
   };
   const fetchVideos = async (location) => {
     try{
-      const res = await fetch('http://localhost:8080/api/youtube',{
+      const res = await fetch(`${process.env.REACT_APP_API_BASE}/api/youtube`,{
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({location})

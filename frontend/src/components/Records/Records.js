@@ -17,7 +17,7 @@ const Records = () => {
 
   const fetchRecords = async () => {
     try {
-      const res = await fetch('http://localhost:8080/api/records');
+      const res = await fetch(`${process.env.REACT_APP_API_BASE}/api/records`);
       const data = await res.json();
       setRecords(data);
     } catch (err) {
@@ -26,7 +26,7 @@ const Records = () => {
   };
   const addRecord = async(record)=>{
     try{
-      const res = await fetch('http://localhost:8080/api/records', {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE}/api/records`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(record),
@@ -39,7 +39,7 @@ const Records = () => {
 
   const deleteRecord = async (id) => {
     try {
-      await fetch(`http://localhost:8080/api/records/${id}`, {
+      await fetch(`${process.env.REACT_APP_API_BASE}/api/records/${id}`, {
         method: 'DELETE',
       });
       fetchRecords();
@@ -50,7 +50,7 @@ const Records = () => {
 
   const updateRecord = async (id, notes) => {
     try {
-      await fetch(`http://localhost:8080/api/records/${id}`, {
+      await fetch(`${process.env.REACT_APP_API_BASE}/api/records/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ notes }),
@@ -64,7 +64,7 @@ const Records = () => {
 
   const handleDownload = async (format) => {
     try{
-        const res = await fetch(`http://localhost:8080/api/records/export?format=${format}`);
+        const res = await fetch(`${process.env.REACT_APP_API_BASE}/api/records/export?format=${format}`);
         const blob = await res.blob();
         const url = window.URL.createObjectURL(blob);
         
