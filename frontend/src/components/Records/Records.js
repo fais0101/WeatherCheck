@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import './Records.css';
 
 const Records = () => {
@@ -7,6 +8,7 @@ const Records = () => {
   const [error, setError] = useState('');
   const [editingId, setEditingId] = useState(null);
   const [editedNote, setEditedNote] = useState('');
+  const [exportFormat, setExportFormat] = useState('json');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,6 +62,23 @@ const Records = () => {
     }
   };
 
+  const handleDownload = async (format) => {
+    try{
+        const res = await fetch(`http://localhost:8080/api/records/export?format=${format}`);
+        const blob = await res.blob();
+        const url = window.URL.createObjectURL(blob);
+        
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `records.${format}`;
+        a.click();
+        window.URL.revokeObjectURL(url);
+    } catch(err){
+        setError('Failed to download records')
+    }
+  };
+
   const startEditing = (record) => {
     setEditingId(record.id);
     setEditedNote(record.notes);
@@ -70,6 +89,20 @@ const Records = () => {
       <button className="back-button" onClick={() => navigate('/')}>
         ⬅️ Back to Weather
       </button>
+      <div className="export-controls">
+        <label style={{ color: 'white' }}>Download As:</label>
+        <select
+            className="export-select"
+            value={exportFormat}
+            onChange={(e) => setExportFormat(e.target.value)}
+        >
+            <option value="json">JSON</option>
+            <option value="csv">CSV</option>
+        </select>
+        <button className="export-button" onClick={() => handleDownload(exportFormat)}>
+            ⬇️ Download
+        </button>
+        </div>
       
       {error && <p className="error">{error}</p>}
 

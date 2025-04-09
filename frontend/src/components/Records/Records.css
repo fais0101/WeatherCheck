@@ -59,3 +59,37 @@
   border-color: #a8a4e6;
   box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.2);
 }
+
+.export-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem auto;
+    max-width: 500px;
+    flex-wrap: wrap;
+  }
+  
+  .export-select {
+    padding: 8px 12px;
+    font-size: 1rem;
+    background: #252547;
+    color: white;
+    border: 1px solid #6c5ce7;
+    border-radius: 6px;
+  }
+  
+  .export-button {
+    padding: 8px 16px;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #00b894, #00cec9);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .export-button:hover {
+    background: linear-gradient(135deg, #00a884, #00bdb8);
+  }
+ 

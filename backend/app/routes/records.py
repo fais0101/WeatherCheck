@@ -1,7 +1,8 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, make_response
 from app import db
 from app.models import WeatherRecord
 from datetime import datetime
+import csv, io, json
 
 records_bp = Blueprint('records', __name__)
 
@@ -85,3 +86,27 @@ def update_record(record_id):
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+@records_bp.route('/api/records/export', methods=['GET'])
+def export_records():
+    format = request.args.get('format', 'json').lower()
+    records = WeatherRecord.query.all()
+
+    if format == 'json':
+        return jsonify([r.to_dict() for r in records])
+    elif format == 'csv':
+        output = io.StringIO()
+        writer = csv.writer(output)
+        writer.writerow(['id', 'location', 'temperature', 'start_date', 'notes'])
+
+        for r in records:
+            writer.writerow([r.id, r.location, r.temperature,r.start_date,r.notes])
+        
+        response = make_response(output.getvalue())
+        response.headers['Content-Disposition'] = 'attachment; filename=records.csv'
+        response.headers['Content-Type'] = 'text/csv'
+        return response
+    else:
+        return jsonify({'error': 'Invalid format. Supported: json, csv'}), 400
+    
+    
