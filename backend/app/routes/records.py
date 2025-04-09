@@ -31,7 +31,6 @@ def create_record():
         record = WeatherRecord(
             location=data['location'],
             start_date=start_date,
-            end_date=None,
             temperature=data.get('temperature'),
             notes=data.get('notes')
         )
